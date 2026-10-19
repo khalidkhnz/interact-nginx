@@ -8,6 +8,8 @@ npx interact-nginx
 
 That starts a small server on `127.0.0.1:7878` and opens the UI in your browser.
 
+New here? Read the step-by-step **[Getting started guide](docs/GETTING-STARTED.md)**.
+
 ## What it does
 
 - **Proxies.** Add, edit, enable/disable and delete `https://domain → http://localhost:port` mappings. Each one gets:
