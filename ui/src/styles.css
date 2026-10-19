@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --color-accent: #0f766e;
+  --color-accent-strong: #115e59;
+}
+
+:root {
+  --bg: #f6f7f6;
+  --panel: #ffffff;
+  --line: #e3e6e4;
+  --text: #17201d;
+  --muted: #5e6b66;
+  --soft: #eef1ef;
+  --ok: #15803d;
+  --warn: #b45309;
+  --err: #b91c1c;
+  --accent-text: #0f766e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1110;
+    --panel: #141a18;
+    --line: #24302c;
+    --text: #e4ebe8;
+    --muted: #8a9a94;
+    --soft: #1a2320;
+    --ok: #4ade80;
+    --warn: #fbbf24;
+    --err: #f87171;
+    --accent-text: #5eead4;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  transition: background 120ms, border-color 120ms, opacity 120ms;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { background: var(--soft); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--color-accent-strong); }
+.btn-danger { color: var(--err); }
+.btn-ghost { border-color: transparent; background: transparent; }
+
+.input {
+  height: 34px;
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+.input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent); }
+
+}
+
+@layer utilities {
+.muted { color: var(--muted); }
+.mono { font-family: var(--font-mono); }
+.label { font-size: 12px; font-weight: 500; color: var(--muted); }
+}
