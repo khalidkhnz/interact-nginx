@@ -1,0 +1,68 @@
+{
+  "name": "interact-nginx",
+  "version": "0.1.0",
+  "description": "Local web UI to manage nginx and map https://your.dev.domain to localhost ports with trusted certs",
+  "keywords": [
+    "nginx",
+    "proxy",
+    "https",
+    "localhost",
+    "mkcert",
+    "reverse-proxy",
+    "dev",
+    "ui"
+  ],
+  "license": "MIT",
+  "author": "Khalid Khan (https://github.com/khalidkhnz)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khalidkhnz/interact-nginx.git"
+  },
+  "homepage": "https://github.com/khalidkhnz/interact-nginx#readme",
+  "bugs": "https://github.com/khalidkhnz/interact-nginx/issues",
+  "type": "module",
+  "bin": {
+    "interact-nginx": "dist/cli.js",
+    "inx": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "vite build && tsup",
+    "dev:server": "INX_DEV_ORIGIN=http://localhost:5173 tsx watch src/cli.ts --no-open",
+    "dev:ui": "vite",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@vscode/sudo-prompt": "^9.3.2",
+    "commander": "^15.0.0",
+    "hono": "^4.13.13",
+    "open": "^11.0.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.3",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}
